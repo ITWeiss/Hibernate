@@ -13,23 +13,17 @@ import java.util.Set;
 @Table(name = "students", schema = "company")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-    @Getter
-    @Setter
     @ManyToMany
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
-    private Set<Course> courses;
-    public Student() {
-        this.courses = new HashSet<>();
-    }
-
+    private Set<Course> courses = new HashSet<>();
 }

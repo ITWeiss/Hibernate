@@ -1,7 +1,6 @@
 package com.example.hibernate.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,17 +14,12 @@ import java.util.Set;
 @Table(name = "courses", schema = "company")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "title", nullable = false, unique = true)
     private String title;
 
-    @Getter
-    @Setter
     @ManyToMany(mappedBy = "courses")
-    private Set<Student> students;
-    public Course() {
-        this.students = new HashSet<>();
-    }
+    private Set<Student> students = new HashSet<>();
 }

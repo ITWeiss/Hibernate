@@ -21,12 +21,6 @@ public class Main {
         student2.setName("Luke Skywalker");
         studentDao.saveStudent(student2);
 
-        Student student3 = new Student();
-        student3.setName("Henry Smith");
-        studentDao.saveStudent(student3);
-
-        studentDao.deleteById(3L);
-
         Course course1 = new Course();
         course1.setTitle("Java developer. Junior level");
         courseDao.saveCourse(course1);
@@ -34,15 +28,6 @@ public class Main {
         Course course2 = new Course();
         course2.setTitle("The basics of Frontend development");
         courseDao.saveCourse(course2);
-
-        Student findByIdStudent = studentDao.findById(1L);
-        System.out.println(findByIdStudent);
-        Course findByIdCourse = courseDao.findById(1L);
-        System.out.println(findByIdCourse);
-
-
-        studentDao.updateStudent(student1);
-        courseDao.updateCourse(course2);
 
         List<Student> students = studentDao.findAll();
         if (students != null && !students.isEmpty()) {
@@ -63,12 +48,6 @@ public class Main {
         } else {
             System.out.println("Курсы не найдены.");
         }
-
-
-        student1.getCourses().add(course1);
-        student1.getCourses().add(course2);
-        studentDao.updateStudent(student1);
-
 
     }
 }
